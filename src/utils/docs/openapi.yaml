@@ -929,6 +929,9 @@ components:
         name:
           type: string
           example: 'Introduction'
+        subtitle:
+          type: string
+          example: 'Inglés conversacional'
         isCompleted:
           type: boolean
         classes:
