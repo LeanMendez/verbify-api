@@ -33,6 +33,15 @@ const getOneModuleFromCourse = async (courseId: string, moduleId: string) => {
   }
 };
 
+const getCoursesPopulated = async () => {
+  try {
+    const coursesPopulated = await Course.find().populate({path: "Module", populate:{ path: "classes"}})
+    return coursesPopulated
+  } catch (err) {
+    throw new Error(err)
+  }
+}
+
 const create = async (body: ICourse) => {
   try {
     await Course.create(body);
@@ -66,6 +75,7 @@ const deleteOneById = async (id: string) => {
     throw new Error(err);
   }
 };
+
 export {
   getAll,
   getOneById,
@@ -74,4 +84,7 @@ export {
   deleteOneById,
   getModulesFromCourse,
   getOneModuleFromCourse,
+  getCoursesPopulated
 };
+
+
